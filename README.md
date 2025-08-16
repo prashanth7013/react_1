@@ -46,3 +46,9 @@ import {Component} from "path";
 (Normal JS utility functions)
 useState() - Superpowerful State Variables in react
 useEffect()
+
+### 2 types of routing
+i. Client side routing
+ii. Server side routing
+
+npm i react-router-dom

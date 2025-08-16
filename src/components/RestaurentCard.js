@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 const RestaurentCard = (props) => {
   const { resData } = props;
   // console.log(JSON.stringify(resData));
-  console.log(JSON.stringify(props));
+  // console.log(JSON.stringify(props));
   const {
     name,
     areaName,
