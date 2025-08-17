@@ -52,3 +52,16 @@ i. Client side routing
 ii. Server side routing
 
 npm i react-router-dom
+
+What is a HOC?
+
+A Higher-Order Component (HOC) is a function that takes a component as input and returns a new component with extra features.
+
+👉 Think of it as a wrapper that adds extra functionality without changing the original component’s code.
+
+
+React Context is useful to avoid props drilling in components
+
+### create context using
+createContext({...})
+use it by hoot "useContext(<CONTEXT_NAME>)"

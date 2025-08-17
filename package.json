@@ -13,7 +13,9 @@
   "author": "Prashanth Sagari",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.15.4"
+    "@tailwindcss/postcss": "^4.1.12",
+    "parcel": "^2.15.4",
+    "tailwindcss": "^4.1.12"
   },
   "dependencies": {
     "react": "^19.1.1",

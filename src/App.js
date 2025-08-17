@@ -6,19 +6,29 @@ import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/userContext";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const name = "Prashanth"
+    setUserName(name);
+  }, []);
+
   return (
     <>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
+      <UserContext.Provider value={{loggedInUser: userName}}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
     </>
   );
 };
@@ -34,7 +44,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/grocery",
         element: (
-          <Suspense fallback={<Shimmer/>}>
+          <Suspense fallback={<Shimmer />}>
             <Grocery />{" "}
           </Suspense>
         ),

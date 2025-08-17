@@ -1,20 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 export const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
+  const dataContext = useContext(UserContext);
+  console.log(dataContext);
+
   const online = useOnlineStatus();
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-50 shadow-lg m-2">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <img className="w-20" src={LOGO_URL} />
       </div>
-      <div>Online Status : {online ? "🟢" : "🔴"}</div>
-      <div className="nav-items">
-        <ul className="nav-list">
+      <div className="m-4">Online Status : {online ? "🟢" : "🔴"}</div>
+      <div className="flex items-center">
+        <ul className="flex space-x-6">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -27,16 +31,9 @@ export const Header = () => {
           <li>
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li>{dataContext.loggedInUser}</li>
           <button
-            style={{
-              marginLeft: "auto",
-              padding: "20px",
-              fontSize: "16px",
-              minWidth: "120px", // keeps size fixed
-              cursor: "pointer",
-            }}
-            className="btn"
+            className=" w-16 px-2 py-1 text-sm text-black rounded"
             onClick={() => {
               setBtnName(btnName === "Login" ? "Logout" : "Login");
             }}
@@ -44,6 +41,7 @@ export const Header = () => {
             {btnName}
           </button>
         </ul>
+        
       </div>
     </div>
   );
